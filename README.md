@@ -20,7 +20,8 @@ An architecture to simplify and automate the data transfer process of MVC,MVVM a
 TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
-
+### Sample usage for MVC pattern
+![sample](https://user-images.githubusercontent.com/63963472/236649181-6a01d107-a2cd-4e3f-b9b3-3a20b5d5748c.png)
 ### Job
   A Job is a class that has the necessary data to start a sync/async process.
 ### JobResponse
