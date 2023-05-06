@@ -1,0 +1,1 @@
+part 'job_response.dart';
