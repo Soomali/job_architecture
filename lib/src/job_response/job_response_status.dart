@@ -1,6 +1,3 @@
 part of 'main.dart';
 
-enum JobResponseStatus {
-  ongoing,
-  finished
-}
+enum JobResponseStatus { ongoing, finished }
