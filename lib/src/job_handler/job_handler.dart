@@ -4,12 +4,14 @@ abstract class JobHandler {
   String getError(Exception exception);
   Iterable<JobResponse<V>> handleJob<T, V>(
       Job<T> job, V Function(T) function) sync* {
-    yield JobResponse(status: JobResponseStatus.ongoing);
+    yield JobResponse(id: job.id, status: JobResponseStatus.ongoing);
     try {
       V result = function.call(job.payload);
-      yield JobResponse(status: JobResponseStatus.finished, result: result);
+      yield JobResponse(
+          id: job.id, status: JobResponseStatus.finished, result: result);
     } on Exception catch (e) {
-      yield JobResponse(status: JobResponseStatus.finished, error: getError(e));
+      yield JobResponse(
+          id: job.id, status: JobResponseStatus.finished, error: getError(e));
     }
   }
 
