@@ -11,8 +11,8 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Job Architecture
+An architecture to simplify and automate the data transfer process of MVC,MVVM and MVP applications.
 
 ## Features
 
