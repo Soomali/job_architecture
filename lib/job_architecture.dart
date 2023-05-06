@@ -4,5 +4,6 @@
 library job_architecture;
 
 export 'src/job_architecture_base.dart';
+export 'src/job_response/main.dart';
 
 // TODO: Export any libraries intended for clients of this package.
