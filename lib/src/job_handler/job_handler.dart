@@ -1,6 +1,6 @@
 part of 'main.dart';
 
-abstract class JobModel {
+abstract class JobHandler {
   String getError(Exception exception);
   Iterable<JobResponse<V>> handleJob<T, V>(
       Job<T> job, V Function(T) function) sync* {
