@@ -1,8 +1,8 @@
 part of 'main.dart';
 
 class JobResponse<T> {
-  final T _result;
+  final T? result;
   final String? error;
-  const JobResponse({required T result,this.error}):_result = result;
-  T get result => _result;
+  final JobResponseStatus status;
+  const JobResponse({this.result,this.error,this.status = JobResponseStatus.ongoing});
 }
