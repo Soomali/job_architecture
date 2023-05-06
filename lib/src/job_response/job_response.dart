@@ -1,17 +1,13 @@
 part of 'main.dart';
 
-class JobResponse<T> {
-  final T? result;
-  final String? id;
-  final String? error;
-  final JobResponseStatus status;
-  const JobResponse(
-      {this.id,
-      this.result,
-      this.error,
-      this.status = JobResponseStatus.ongoing});
-  @override
-  bool operator ==(Object? other) {
-    return other is JobResponse<T> && other.id == id;
-  }
+@freezed
+class JobResponse<T> with _$JobResponse<T> {
+  factory JobResponse.start(String id) =>
+      JobResponse(id: id, status: JobResponseStatus.ongoing);
+
+  factory JobResponse(
+      {required String id,
+      T? result,
+      String? error,
+      required JobResponseStatus status}) = _JobResponse;
 }
