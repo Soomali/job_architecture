@@ -3,13 +3,13 @@ part of 'main.dart';
 abstract class JobHandler {
   String getError(Exception exception);
   Iterable<JobResponse<V>> handleJob<T, V>(
-      Job<T> job, V Function(T) function) sync* {
+      JobCompleter<T, V> jobCompleter) sync* {
     final response = JobResponse<V>.start(
-      job.id,
+      jobCompleter.job.id,
     );
     yield response;
     try {
-      V result = function.call(job.payload);
+      V result = jobCompleter.completer.call(jobCompleter.job.payload);
       yield response.copyWith(result: result);
     } on Exception catch (e) {
       yield response.copyWith(
@@ -18,13 +18,13 @@ abstract class JobHandler {
   }
 
   Stream<JobResponse<V>> handleAsyncJob<T, V>(
-      Job<T> job, Future<V> Function(T) function) async* {
+      JobCompleter<T, Future<V>> jobCompleter) async* {
     final response = JobResponse<V>.start(
-      job.id,
+      jobCompleter.job.id,
     );
     yield response;
     try {
-      V result = await function.call(job.payload);
+      V result = await jobCompleter.completer.call(jobCompleter.job.payload);
       yield response.copyWith(result: result);
     } on Exception catch (e) {
       yield response.copyWith(
